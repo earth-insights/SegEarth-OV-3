@@ -1,5 +1,3 @@
-<div align="center">
-
 <h1>SegEarth-OV3: Exploring SAM 3 for Open-Vocabulary Semantic Segmentation in Remote Sensing Images</h1>
 
 <!-- <h3></h3> -->
@@ -30,13 +28,12 @@
 <img src="resources/vis.png" width="100%"/>
 </div>
 
-Inference results of SegEarth-OV3 on a remote sensing image exceeding 10k×10k resolution. The image originates from [OpenMapCD](https://zenodo.org/records/14028095).
+> Inference results of SegEarth-OV3 on a remote sensing image exceeding 10k×10k resolution. The image originates from [OpenMapCD](https://zenodo.org/records/14028095).
 
-
-<img src="" width="100%"/>
-
-The overall inference pipeline of SegEarth-OV3. Given an input image and a list of text prompts, we leverage SAM 3's decoupled outputs. The pipeline involves: (1) instance aggregation to consolidate sparse object queries; (2) dual-head mask fusion to combine the fine-grained instance details with the global coverage of the semantic head; and (3) presence-guided filtering (using the presence score) to suppress false positives from absent categories.
+<img src="https://github.com/user-attachments/assets/d17ce794-9cd8-47cc-8b2c-a9b3e4739a10" width="100%"/>
 </div>
+
+> The overall inference pipeline of SegEarth-OV3. Given an input image and a list of text prompts, we leverage SAM 3's decoupled outputs. The pipeline involves: (1) instance aggregation to consolidate sparse object queries; (2) dual-head mask fusion to combine the fine-grained instance details with the global coverage of the semantic head; and (3) presence-guided filtering (using the presence score) to suppress false positives from absent categories.
 
 ## Abstract
 > *Most existing methods for training-free Open-Vocabulary Semantic Segmentation (OVSS) are based on CLIP. While these approaches have made progress, they often face challenges in precise localization or require complex pipelines to combine separate modules, especially in remote sensing scenarios where numerous dense and small targets are present. Recently, Segment Anything Model 3 (SAM 3) was proposed, unifying segmentation and recognition in a promptable framework. In this paper, we present a preliminary exploration of applying SAM 3 to the remote sensing OVSS task without any training. First, we implement a mask fusion strategy that combines the outputs from SAM 3's semantic segmentation head and the Transformer decoder (instance head). This allows us to leverage the strengths of both heads for better land coverage. Second, we utilize the presence score from the presence head to filter out categories that do not exist in the scene, reducing false positives caused by the vast vocabulary sizes and patch-level processing in geospatial scenes. We evaluate our method on extensive remote sensing datasets. Experiments show that this simple adaptation achieves promising performance, demonstrating the potential of SAM 3 for remote sensing OVSS.*
@@ -56,7 +53,7 @@ Please refer to [dataset_prepare.md](https://github.com/likyoo/SegEarth-OV/blob/
 
 ## Download checkpoints of SAM 3
 
-Download checkpoints from [HF](https://huggingface.co/facebook/sam3) or ModelScope.
+Download checkpoints from [HF](https://huggingface.co/facebook/sam3) or [ModelScope](https://modelscope.cn/models/facebook/sam3).
 
 ## Model evaluation
 
@@ -65,13 +62,12 @@ python eval.py ./configs/cfg_DATASET.py
 ```
 
 ## Results
-
 <div>
-<img src="" width="100%"/>
+<img src="https://github.com/user-attachments/assets/393b9b2f-ac81-417f-aa4a-a11f99b8fb87" width="80%"/>
 </div>
 
 <div>
-<img src="" width="100%"/>
+<img src="https://github.com/user-attachments/assets/64c581f2-70f7-4d6e-b59f-fc6484648501" width="80%"/>
 </div>
 
 ## Citation
