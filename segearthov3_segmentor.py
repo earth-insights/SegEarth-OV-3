@@ -43,7 +43,6 @@ class SegEarthOV3Segmentation(BaseSegmentor):
         self.bg_idx = bg_idx
         self.slide_stride = slide_stride
         self.slide_crop = slide_crop
-        self.pamr = pamr
         self.confidence_threshold = confidence_threshold
         self.use_sem_seg = use_sem_seg
         self.use_presence_score = use_presence_score
