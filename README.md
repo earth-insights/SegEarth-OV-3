@@ -94,7 +94,7 @@ python eval.py ./configs/cfg_DATASET.py
 ```
 @article{li2025segearthov3,
   title={SegEarth-OV3: Exploring SAM 3 for Open-Vocabulary Semantic Segmentation in Remote Sensing Images},
-  author={Li, Kaiyu and Zhang, Shengqi and Deng, Yupeng and Wang, Zhi and Meng, Deyu and Cao, Xiangyong},
+  author={Li, Kaiyu and Zhang, Shengqi and Wang, Yujie and Deng, Yupeng and Wang, Zhi and Meng, Deyu and Cao, Xiangyong},
   journal={arXiv preprint arXiv:2512.08730},
   year={2025}
 }
