@@ -11,6 +11,7 @@
 <div>
     <a href='https://likyoo.github.io/' target='_blank'>Kaiyu Li</a><sup>1</sup>&emsp;
     <a href='https://github.com/bavarianvilliager' target='_blank'>Shengqi Zhang</a><sup>1</sup>&emsp;
+    <a href='https://github.com/acousmasyndrome' target='_blank'>Yujie Wang</a><sup>1</sup>&emsp;
     <a href='https://scholar.google.com/citations?user=Lmqy-D4AAAAJ&hl=zh-CN&oi=ao' target='_blank'>Yupeng Deng</a><sup>2</sup>&emsp;
     <a href='https://gr.xjtu.edu.cn/en/web/zhiwang' target='_blank'>Zhi Wang</a><sup>1</sup>&emsp;
     <a href='https://gr.xjtu.edu.cn/en/web/dymeng' target='_blank'>Deyu Meng</a><sup>1</sup>&emsp;
