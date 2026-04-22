@@ -51,9 +51,9 @@ We include the following dataset configurations in this repo:
 2) `Building Extraction`: WHU<sup>Aerial</sup>, WHU<sup>Sat.Ⅱ</sup>, Inria, xBD<sup>pre</sup>
 4) `Road Extraction`: CHN6-CUG, DeepGlobe, Massachusetts, SpaceNet
 5) `Water Extraction`: WBS-SI
-6) `Gaofen Series Data`: GID, GF
-7) `Change Detection`:
-8) `3D Segmentation`
+6) `Gaofen Series Data`: GID, GF-7 Building Dataset, Low-Grade Road Dataset
+7) `Change Detection`: LEVIR-CD, WHU-CD, S2Looking
+8) `3D Segmentation`: STPLS3D (WMSC)
 
 For 1) - 4), please refer to [SegEarth-OV/dataset_prepare.md](https://github.com/likyoo/SegEarth-OV/blob/main/dataset_prepare.md) for dataset preparation.  
 For 6) - 8). please refer to [dataset_prepare.md](dataset_prepare.md) for dataset preparation.
