@@ -5,7 +5,7 @@
 <!-- <h3></h3> -->
 
 <div>
-    <strong>Adapting SAM 3 for remote sensing OVSS</strong>
+    <strong>Adapting SAM 3 for remote sensing open-vocabulary semantic segmentation, change detection, and 3D segmentation</strong>
 </div>
 
 <div>
