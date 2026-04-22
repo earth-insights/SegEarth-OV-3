@@ -85,6 +85,10 @@ python eval.py ./configs/cfg_DATASET.py
 <img src="https://github.com/user-attachments/assets/7cae3ccd-82b7-42d3-a840-95ffaf09a5d4" width="80%"/>
 </div>
 
+<div>
+<img src="https://github.com/user-attachments/assets/65fdd629-83ed-441e-8c4d-3e09f9839c31" width="80%"/>
+</div>
+
 ## Citation
 
 ```
