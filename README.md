@@ -74,11 +74,15 @@ python eval.py ./configs/cfg_DATASET.py
 
 ## Results
 <div>
-<img src="https://github.com/user-attachments/assets/393b9b2f-ac81-417f-aa4a-a11f99b8fb87" width="80%"/>
+<img src="https://github.com/user-attachments/assets/ae2895a9-0225-4cda-8ea0-3a5ee4e06224" width="80%"/>
 </div>
 
 <div>
-<img src="https://github.com/user-attachments/assets/64c581f2-70f7-4d6e-b59f-fc6484648501" width="80%"/>
+<img src="https://github.com/user-attachments/assets/fe56af77-6d16-45da-b705-4c02478c0c5e" width="80%"/>
+</div>
+
+<div>
+<img src="https://github.com/user-attachments/assets/7cae3ccd-82b7-42d3-a840-95ffaf09a5d4" width="80%"/>
 </div>
 
 ## Citation
