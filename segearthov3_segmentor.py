@@ -29,7 +29,7 @@ class SegEarthOV3Segmentation(BaseSegmentor):
         self.device = device
         # Initialize SAM3 model
         model = build_sam3_image_model(
-            bpe_path=f"./sam3/assets/bpe_simple_vocab_16e6.txt.gz", 
+            bpe_path="./sam3/assets/bpe_simple_vocab_16e6.txt.gz", 
             checkpoint_path='weights/sam3/sam3.pt', 
             device="cuda"
         )

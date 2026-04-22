@@ -5,7 +5,7 @@ model = dict(
     model_type='SAM3'
 )
 
-test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU'])
+test_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU', 'mFscore'])
 
 default_scope = 'mmseg'
 env_cfg = dict(

@@ -1,5 +1,6 @@
 import os.path as osp
 
+import mmengine
 import mmengine.fileio as fileio
 from mmseg.registry import DATASETS
 from mmseg.datasets import BaseSegDataset
@@ -514,3 +515,132 @@ class WaterDataset(BaseSegDataset):
             seg_map_suffix=seg_map_suffix,
             reduce_zero_label=reduce_zero_label,
             **kwargs)
+
+
+@DATASETS.register_module()
+class GID5Dataset(BaseSegDataset):
+    """GID 5-class (6 classes including background) dataset."""
+    
+    METAINFO = dict(
+        classes=('unlabeled', 'built-up', 'farmland', 'forest', 'meadow', 'water'),
+        palette=[[0, 0, 0], [255, 0, 0], [0, 255, 0], [0, 255, 255], [255, 255, 0], [0, 0, 255]]
+    )
+
+    def __init__(self,
+                 img_suffix='.png',
+                 seg_map_suffix='.png',
+                 reduce_zero_label=False,
+                 **kwargs) -> None:
+        super().__init__(
+            img_suffix=img_suffix,
+            seg_map_suffix=seg_map_suffix,
+            reduce_zero_label=reduce_zero_label,
+            **kwargs)
+
+@DATASETS.register_module()
+class GF7BuildingDataset(BaseSegDataset):
+    """GF-7 Building dataset.
+
+    """
+    METAINFO = dict(
+        classes=('background', 'building'),
+        palette=[[0, 0, 0], [255, 255, 255]])
+
+    def __init__(self,
+                 img_suffix='.tif',
+                 seg_map_suffix='.tif',
+                 reduce_zero_label=False,
+                 **kwargs) -> None:
+        super().__init__(
+            img_suffix=img_suffix,
+            seg_map_suffix=seg_map_suffix,
+            reduce_zero_label=reduce_zero_label,
+            **kwargs)
+
+@DATASETS.register_module()
+class GFRoadDataset(BaseSegDataset):
+    """GF Road dataset.
+
+    """
+    METAINFO = dict(
+        classes=('background', 'road'),
+        palette=[[0, 0, 0], [255, 255, 255]])
+
+    def __init__(self,
+                 img_suffix='.png',
+                 seg_map_suffix='.png',
+                 reduce_zero_label=False,
+                 **kwargs) -> None:
+        super().__init__(
+            img_suffix=img_suffix,
+            seg_map_suffix=seg_map_suffix,
+            reduce_zero_label=reduce_zero_label,
+            **kwargs)
+
+@DATASETS.register_module()
+class CDDataset(BaseSegDataset):
+    """CD dataset.
+    """
+    METAINFO = dict(
+        classes=('background', 'building'),
+        palette=[[0, 0, 0], [255, 255, 255]])
+
+    def __init__(self,
+                 img_suffix='.png',
+                 seg_map_suffix='.png',
+                 reduce_zero_label=False,
+                 **kwargs) -> None:
+        super().__init__(
+            img_suffix=img_suffix,
+            seg_map_suffix=seg_map_suffix,
+            reduce_zero_label=reduce_zero_label,
+            **kwargs)
+
+    def load_data_list(self):
+        """Load annotation from directory or annotation file.
+        """
+        data_list = []
+        img1_dir = self.data_prefix.get('img1_path', None)
+        img2_dir = self.data_prefix.get('img2_path', None)
+        ann_dir = self.data_prefix.get('seg_map_path', None)
+        
+        if not osp.isdir(self.ann_file) and self.ann_file:
+            assert osp.isfile(self.ann_file), \
+                f'Failed to load `ann_file` {self.ann_file}'
+            lines = mmengine.list_from_file(
+                self.ann_file, backend_args=self.backend_args)
+            for line in lines:
+                img1_name = line.strip()
+                img1_path = osp.join(img1_dir, img1_name + self.img_suffix)
+                data_info = dict(img1_path=img1_path)
+                if img2_dir is not None:
+                    data_info['img2_path'] = osp.join(img2_dir, img1_name + self.img_suffix)
+                if ann_dir is not None:
+                    seg_map = img1_name + self.seg_map_suffix
+                    data_info['seg_map_path'] = osp.join(ann_dir, seg_map)
+                data_info['label_map'] = self.label_map
+                data_info['reduce_zero_label'] = self.reduce_zero_label
+                data_info['seg_fields'] = []
+                data_list.append(data_info)
+        else:
+            _suffix_len = len(self.img_suffix)
+            for img1 in fileio.list_dir_or_file(
+                    dir_path=img1_dir,
+                    list_dir=False,
+                    suffix=self.img_suffix,
+                    recursive=True,
+                    backend_args=self.backend_args):
+                img1_path = osp.join(img1_dir, img1)
+                data_info = dict(img1_path=img1_path)
+                if img2_dir is not None:
+                    img2_path = osp.join(img2_dir, img1)
+                    data_info['img2_path'] = img2_path
+                if ann_dir is not None:
+                    seg_map = img1[:-_suffix_len] + self.seg_map_suffix
+                    data_info['seg_map_path'] = osp.join(ann_dir, seg_map)
+                data_info['label_map'] = self.label_map
+                data_info['reduce_zero_label'] = self.reduce_zero_label
+                data_info['seg_fields'] = []
+                data_list.append(data_info)
+            data_list = sorted(data_list, key=lambda x: x['img1_path'])
+        return data_list

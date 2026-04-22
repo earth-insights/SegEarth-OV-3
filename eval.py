@@ -6,7 +6,9 @@ from mmengine.runner import Runner
 from mmengine.config import Config, DictAction
 
 import segearthov3_segmentor
+import segearthov3_change_detector
 import custom_datasets
+import custom_transforms
 
 
 def parse_args():

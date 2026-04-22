@@ -2,6 +2,7 @@ __pycache__
 .vscode/
 .idea/
 data
+dataset
 pretrained
 results.xlsx
 work_dirs
@@ -10,3 +11,4 @@ run.sh
 show_dir
 weights
 figs
+sam3_1

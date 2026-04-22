@@ -38,7 +38,7 @@
 > The overall inference pipeline of SegEarth-OV3. Given an input image and a list of text prompts, we leverage SAM 3's decoupled outputs. The pipeline involves: (1) instance aggregation to consolidate sparse object predictions; (2) dual-head mask fusion to combine the fine-grained instance details with the global coverage of the semantic head; and (3) presence-guided filtering (using the presence score) to suppress false positives from absent categories. "MAX" denotes the element-wise maximum operation, and "×" denotes multiplication.
 
 ## Abstract
-> *Most existing methods for training-free Open-Vocabulary Semantic Segmentation (OVSS) are based on CLIP. While these approaches have made progress, they often face challenges in precise localization or require complex pipelines to combine separate modules, especially in remote sensing scenarios where numerous dense and small targets are present. Recently, Segment Anything Model 3 (SAM 3) was proposed, unifying segmentation and recognition in a promptable framework. In this paper, we present a preliminary exploration of applying SAM 3 to the remote sensing OVSS task without any training. First, we implement a mask fusion strategy that combines the outputs from SAM 3's semantic segmentation head and the Transformer decoder (instance head). This allows us to leverage the strengths of both heads for better land coverage. Second, we utilize the presence score from the presence head to filter out categories that do not exist in the scene, reducing false positives caused by the vast vocabulary sizes and patch-level processing in geospatial scenes. We evaluate our method on extensive remote sensing datasets. Experiments show that this simple adaptation achieves promising performance, demonstrating the potential of SAM 3 for remote sensing OVSS.*
+> *Most existing methods for training-free open-vocabulary semantic segmentation are based on CLIP. While these approaches have made progress, they often face challenges in precise localization or require complex pipelines to combine separate modules, especially in remote sensing scenarios where numerous dense and small targets are present. Recently, Segment Anything Model 3 (SAM 3) was proposed, unifying segmentation and recognition in a promptable framework. In this paper, we present a comprehensive exploration of applying SAM 3 to the remote sensing open-vocabulary tasks (\textit{i.e.}, 2D semantic segmentation, change detection, and 3D semantic segmentation) without any training. First, we implement a mask fusion strategy that combines the outputs from SAM 3's semantic segmentation head and the Transformer decoder (instance head). This allows us to leverage the strengths of both heads for better land coverage. Second, we utilize the presence score from the presence head to filter out categories that do not exist in the scene, reducing false positives caused by the vast vocabulary sizes and patch-level processing in geospatial scenes. Furthermore, we extend our method to open-vocabulary change detection by a joint instance- and pixel-level verification strategy built directly upon our fused logits. We evaluate our method on extensive remote sensing datasets and tasks, including 20 segmentation datasets, 3 change detection datasets, and a 3D segmentation dataset. Experiments show that our method achieves promising performance, demonstrating the potential of SAM 3 for remote sensing open-vocabulary tasks.*
 
 ## Dependencies and Installation
 
@@ -50,8 +50,12 @@ We include the following dataset configurations in this repo:
 2) `Building Extraction`: WHU<sup>Aerial</sup>, WHU<sup>Sat.Ⅱ</sup>, Inria, xBD<sup>pre</sup>
 4) `Road Extraction`: CHN6-CUG, DeepGlobe, Massachusetts, SpaceNet
 5) `Water Extraction`: WBS-SI
+6) `Gaofen Series Data`: GID, GF
+7) `Change Detection`:
+8) `3D Segmentation`
 
-Please refer to [dataset_prepare.md](https://github.com/likyoo/SegEarth-OV/blob/main/dataset_prepare.md) for dataset preparation.
+For 1) - 4), please refer to [SegEarth-OV/dataset_prepare.md](https://github.com/likyoo/SegEarth-OV/blob/main/dataset_prepare.md) for dataset preparation.  
+For 6) - 8). please refer to [dataset_prepare.md](dataset_prepare.md) for dataset preparation.
 
 ## Download checkpoints of SAM 3
 
@@ -89,5 +93,5 @@ python eval.py ./configs/cfg_DATASET.py
 ```
 
 ## Acknowledgement
-This implementation is based on [SAM 3](https://github.com/facebookresearch/sam3) and [SCLIP](https://github.com/wangf3014/SCLIP). Thanks for the awesome work.
+This implementation is based on [SAM 3](https://github.com/facebookresearch/sam3) and [SCLIP](https://github.com/wangf3014/SCLIP). We would also like to thank Xu Zhang for providing the [OmniOVCD](https://arxiv.org/abs/2601.13895) code, which forms the basis of the OVCD part in this code.
 
