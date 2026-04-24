@@ -102,5 +102,5 @@ python eval.py ./configs/cfg_DATASET.py
 ```
 
 ## Acknowledgement
-This implementation is based on [SAM 3](https://github.com/facebookresearch/sam3) and [SCLIP](https://github.com/wangf3014/SCLIP). We would also like to thank Xu Zhang for providing the [OmniOVCD](https://arxiv.org/abs/2601.13895) code, which forms the basis of the OVCD part in this code.
+This implementation is based on [SAM 3](https://github.com/facebookresearch/sam3) and [SCLIP](https://github.com/wangf3014/SCLIP). We would also like to thank Xu Zhang for providing the [OmniOVCD](https://github.com/Erxucomeon/OmniOVCD) code, which forms the basis of the OVCD part in this code.
 
